@@ -27,5 +27,20 @@ namespace RootControl
         {
             InitializeComponent();
         }
+
+        public void ShowConfigurationRequiredState()
+        {
+            StateTitleText.Text = "Configuration requise";
+            StateDescriptionText.Text = "Aucune configuration minimale détectée. L'écran Paramètres devra être ouvert au prochain jalon.";
+            BrowserView.Visibility = Visibility.Collapsed;
+        }
+
+        public void ShowKioskPreview(string url)
+        {
+            StateTitleText.Text = "Mode kiosk";
+            StateDescriptionText.Text = $"Configuration chargée. URL active : {url}";
+            BrowserView.Source = new Uri(url);
+            BrowserView.Visibility = Visibility.Visible;
+        }
     }
 }

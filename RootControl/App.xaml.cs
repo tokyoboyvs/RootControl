@@ -15,6 +15,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using RootControl.Models;
+using RootControl.Services;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -43,7 +45,21 @@ namespace RootControl
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            _window = new MainWindow();
+            var settingsService = new SettingsService();
+            AppSettings settings = settingsService.LoadAsync().GetAwaiter().GetResult();
+
+            var mainWindow = new MainWindow();
+
+            if (settings.HasMinimumConfiguration())
+            {
+                mainWindow.ShowKioskPreview(settings.WebUrl);
+            }
+            else
+            {
+                mainWindow.ShowConfigurationRequiredState();
+            }
+
+            _window = mainWindow;
             _window.Activate();
         }
     }

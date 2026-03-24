@@ -14,23 +14,29 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid>
+    <Grid RowSpacing="12" Padding="24">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Border Padding="12" Background="#111827">
-            <TextBlock
-                Text="RootControl - Validation WebView2"
-                Foreground="White"
-                FontSize="18"
-                FontWeight="SemiBold" />
-        </Border>
+        <TextBlock
+            x:Name="StateTitleText"
+            Text="RootControl"
+            FontSize="28"
+            FontWeight="SemiBold" />
+
+        <TextBlock
+            x:Name="StateDescriptionText"
+            Grid.Row="1"
+            Text="Etat de l'application"
+            TextWrapping="WrapWholeWords" />
 
         <webview:WebView2
             x:Name="BrowserView"
-            Grid.Row="1"
-            Source="https://example.com" />
+            Grid.Row="2"
+            Source="https://example.com"
+            Visibility="Collapsed" />
     </Grid>
 </Window>

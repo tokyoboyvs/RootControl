@@ -18,6 +18,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -33,9 +36,37 @@
             Text="Etat de l'application"
             TextWrapping="WrapWholeWords" />
 
+        <StackPanel
+            x:Name="SettingsPanel"
+            Grid.Row="2"
+            Spacing="12"
+            MaxWidth="520">
+
+            <TextBlock Text="Lien a afficher" />
+            <TextBox
+                x:Name="WebUrlTextBox"
+                PlaceholderText="https://exemple.local" />
+
+            <TextBlock Text="Nouveau PIN maitre" />
+            <PasswordBox x:Name="MasterPinBox" />
+
+            <TextBlock Text="Repeter le PIN maitre" />
+            <PasswordBox x:Name="ConfirmMasterPinBox" />
+
+            <Button
+                x:Name="SaveSettingsButton"
+                Content="Enregistrer la configuration"
+                Click="SaveSettingsButton_Click" />
+
+            <TextBlock
+                x:Name="SettingsFeedbackText"
+                Text=""
+                TextWrapping="WrapWholeWords" />
+        </StackPanel>
+
         <webview:WebView2
             x:Name="BrowserView"
-            Grid.Row="2"
+            Grid.Row="5"
             Source="https://example.com"
             Visibility="Collapsed" />
     </Grid>

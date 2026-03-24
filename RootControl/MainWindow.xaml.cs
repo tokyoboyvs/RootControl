@@ -27,6 +27,7 @@ namespace RootControl
     public sealed partial class MainWindow : Window
     {
         private readonly SettingsService _settingsService = new();
+        private readonly PinService _pinService = new();
 
         public MainWindow()
         {
@@ -67,7 +68,7 @@ namespace RootControl
 
             if (string.IsNullOrWhiteSpace(pin) || pin.Length < 4)
             {
-                SettingsFeedbackText.Text = "Le PIN maitre doit contenir au moins 4 caracteres.";
+                SettingsFeedbackText.Text = "Le PIN maitre doit contenir au moins 4 caractères.";
                 return;
             }
 
@@ -80,7 +81,7 @@ namespace RootControl
             var settings = new AppSettings
             {
                 WebUrl = url,
-                MasterPinHash = pin
+                MasterPinHash = _pinService.HashPin(pin)
             };
 
             await _settingsService.SaveAsync(settings);

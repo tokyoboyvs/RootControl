@@ -37,8 +37,21 @@
             TextWrapping="WrapWholeWords" />
 
         <StackPanel
-            x:Name="SettingsPanel"
+            x:Name="ActionPanel"
             Grid.Row="2"
+            Orientation="Horizontal"
+            Spacing="12"
+            Visibility="Collapsed">
+
+            <Button
+                x:Name="OpenSettingsButton"
+                Content="Parametres"
+                Click="OpenSettingsButton_Click" />
+        </StackPanel>
+
+        <StackPanel
+            x:Name="SettingsPanel"
+            Grid.Row="3"
             Spacing="12"
             MaxWidth="520">
 
@@ -52,6 +65,34 @@
 
             <TextBlock Text="Repeter le PIN maitre" />
             <PasswordBox x:Name="ConfirmMasterPinBox" />
+
+            <CheckBox
+                x:Name="RefreshEnabledCheckBox"
+                Content="Activer le rafraichissement automatique" />
+
+            <TextBlock Text="Duree avant rafraichissement (hh:mm)" />
+            <TextBox
+                x:Name="RefreshIntervalTextBox"
+                Text="00:15"
+                PlaceholderText="00:15" />
+
+            <CheckBox
+                x:Name="RefreshOnIdleOnlyCheckBox"
+                Content="Rafraichir uniquement en cas d'inactivite" />
+
+            <TextBlock Text="Duree d'inactivite avant rafraichissement (hh:mm)" />
+            <TextBox
+                x:Name="IdleRefreshDelayTextBox"
+                Text="00:05"
+                PlaceholderText="00:05" />
+
+            <CheckBox
+                x:Name="ForceHardRefreshCheckBox"
+                Content="Forcer le hard refresh" />
+
+            <CheckBox
+                x:Name="BlockInputsCheckBox"
+                Content="Bloquer clavier et souris" />
 
             <Button
                 x:Name="SaveSettingsButton"

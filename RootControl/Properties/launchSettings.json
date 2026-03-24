@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RootControl (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RootControl (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
